@@ -1,11 +1,21 @@
 {
     "name": "template-vue",
     "version": "0.1.0",
+    "imageName": "vue-template",
+    "imageHubName": "harbor.pcitech.com/prophet/vue-template",
+    "harbor": {
+        "user": "admin",
+        "password": "suntek",
+        "host": "harbor.pcitech.com"
+    },
     "private": true,
     "scripts": {
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
-        "lint": "vue-cli-service lint"
+        "build:proxy": "vue-cli-service build && node proxy/page_replace.js",
+        "build:report": "vue-cli-service build --report ",
+        "lint": "vue-cli-service lint",
+        "http-server": "http-server ./dist --gzip --cors"
     },
     "dependencies": {
         "axios": "^0.19.0",
@@ -32,6 +42,7 @@
         "lint-staged": "^8.1.5",
         "sass": "^1.18.0",
         "sass-loader": "^7.1.0",
+        "shelljs": "^0.8.3",
         "vue-template-compiler": "^2.6.10"
     },
     "gitHooks": {

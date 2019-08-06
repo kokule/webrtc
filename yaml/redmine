@@ -1,0 +1,11 @@
+
+
+kubectl delete configmap vue-template-config -n prophet
+kubectl create configmap vue-template-config --from-file=config=config.js -n prophet
+
+kubectl delete -f fluentd-configmap-vue-template.yaml
+kubectl delete -f vue-template-deployment.yaml
+
+kubectl create -f fluentd-configmap-vue-template.yaml
+kubectl create -f vue-template-deployment.yaml
+

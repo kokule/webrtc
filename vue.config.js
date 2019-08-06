@@ -36,7 +36,11 @@ module.exports = {
     configureWebpack: {
         resolve: {
             alias: {
-                '@': path.resolve(__dirname, 'src')
+                '@': path.resolve(__dirname, 'src'),
+                '@views': path.resolve(__dirname, 'src/app/views'),
+                '@common': path.resolve(__dirname, 'src/common'),
+                '@constants': path.resolve(__dirname, 'src/constants'),
+                '@utils': path.resolve(__dirname, 'src/common/utils')
             }
         },
         plugins: [
