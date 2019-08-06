@@ -1,0 +1,23 @@
+
+html, body, #app {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #e1e1e1;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-track {
+    background: none;
+}
