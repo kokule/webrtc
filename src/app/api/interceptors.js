@@ -1,4 +1,4 @@
-import { Message } from 'common-ui/types';
+import { Message } from '@pci/common-ui/types';
 
 // 设置默认请求头信息
 Axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';

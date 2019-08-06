@@ -34,7 +34,7 @@ echo('========== build start ==========');
 
 cd('./');
 exec('cnpm install');
-exec('npm run build');
+exec('npm run build:proxy');
 
 rm('./build.tar.gz');
 exec('tar -zcvf build.tar.gz dist/* proxy/*');

@@ -1,7 +1,7 @@
 import Vue from 'vue';
-import CommonUI from 'common-ui';
+import CommonUI from '@pci/common-ui';
 
 import 'normalize.css';
-import 'common-ui/theme/index.scss';
+import '@pci/common-ui/theme/index.scss';
 
 Vue.use(CommonUI);

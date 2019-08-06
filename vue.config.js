@@ -54,6 +54,6 @@ module.exports = {
     transpileDependencies: [
         'vue-echarts',
         'resize-detector',
-        'common-ui'
+        '@pci/common-ui'
     ]
 };
