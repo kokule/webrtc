@@ -1,8 +1,8 @@
 {
     "name": "template-vue",
     "version": "0.1.0",
-    "imageName": "vue-template",
-    "imageHubName": "harbor.pcitech.com/prophet/vue-template",
+    "imageName": "template-vue",
+    "imageHubName": "harbor.pcitech.com/prophet/template-vue",
     "harbor": {
         "user": "admin",
         "password": "suntek",

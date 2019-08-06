@@ -1,7 +1,7 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: fluentd-configmap-vue-template
+  name: fluentd-configmap-template-vue
   namespace: prophet
   labels:
     addonmanager.kubernetes.io/mode: Reconcile
@@ -10,21 +10,21 @@ data:
     <system>
       root_dir /tmp/fluentd-buffers/
     </system>
-  vue-template.input.conf: |-
+  template-vue.input.conf: |-
     <source>
-      @id vue-template.log
+      @id template-vue.log
       @type tail
       format none
       multiline_flush_interval 5s
       read_lines_limit 50
       read_from_head true
       limit_recently_modified 86400
-      path /var/log/vue-template/*.log
-      pos_file /var/log/vue-template.log.pos
+      path /var/log/template-vue/*.log
+      pos_file /var/log/template-vue.log.pos
       #<parse>
       #  @type json
       #</parse>
-      tag vue-template.*
+      tag template-vue.*
     </source>
   output.conf: |-
     <match **>
@@ -34,7 +34,7 @@ data:
       include_tag_key true
       host elasticsearch-logging.kube-system
       port 9200
-      index_name vue-template.${tag}.%Y%m%d
+      index_name template-vue.${tag}.%Y%m%d
       include_timestamp true
       #logstash_format true
       #<buffer>
@@ -42,7 +42,7 @@ data:
       #</buffer>
       <buffer tag,time>
         @type file
-        path /var/log/fluentd-buffers/vue-template.buffer
+        path /var/log/fluentd-buffers/template-vue.buffer
         flush_mode interval
         retry_type exponential_backoff
         flush_thread_count 2
