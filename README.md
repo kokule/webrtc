@@ -78,9 +78,20 @@ proxy目录为node代理的相关内容，proxy/config.js 为代理配置文件
 
 1、在package.json 中调整 version、imageName、imageHubName、harbor等配置
 
-2、先运行 npm install 或者直接安装 shelljs：npm i -D shelljs（全局：npm i -g shelljs）
+2、需要先构建打包前端资源
+
+```bash
+npm config set registry http://registry.npm.taobao.org/
+npm config set sass_binary_site https://npm.taobao.org/mirrors/node-sass/
+npm install
+npm run build:proxy
+```
 
 3、build.image.js 脚本会获取package.json的配置构建镜像并推送
+
+> ### 请确保已经成功执行过 npm install，否则脚本不能正常执行
+
+- 执行以下命令构建镜像
 
 ```bash
 node build.image.js
@@ -88,4 +99,47 @@ node build.image.js
 node build.image.js 1.0.0
 ```
 
-> 如果最后带上了版本号，构建的镜像会以命令中的版本号为准
+- 更多参数
+
+```bash
+node build.image.js -v 1.1.0 -c ./config.json -l
+```
+
+-h 查看使用说明
+
+-c 指定配置文件，不指定时默认读取package.json，必须为json文件
+
+-v 指定参数，不指定时默认读取配置文件中的version作为版本号，并且会默认添加随机版本号
+
+-l, --lock 锁定版本号，请作为最后的参数使用，强制不在版本号后面添加日期+随机数（日期只有月、日），有四种取值
+
+    - enable 启用
+    - disable 不启用锁定
+    - date 只添加日期
+    - random 只添加随机数
+
+补充说明：
+
+1) 第一个参数：如果第一个参数不是命令的形式，会将此参数作为版本号，构建的镜像会以命令中的版本号为准
+
+2) 随机数使用说明：增加随机数是为了在持续集成中区分每次构建的镜像，因此：
+
+- 使用配置文件的版本号时，默认会添加随机数，不启用lock
+- 使用命令行指定版本号时，默认启用lock，不会添加随机数，如果确实需要，将lock设为false： -l disable 
+
+3) 注意在命令行中指定的版本号（包括-v和第一个参数指定），会默认启用 --lock，如果需要随机数请使用lock参数
+
+config.json
+```json
+{
+    "version": "0.1.0",
+    "lockVersion": "disable",
+    "imageName": "template-vue",
+    "imageHubName": "harbor.pcitech.com/prophet/template-vue",
+    "harbor": {
+        "user": "admin",
+        "password": "suntek",
+        "host": "harbor.pcitech.com"
+    }
+}
+```
