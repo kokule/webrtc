@@ -39,7 +39,7 @@ const matchLockMap = (value) => {
         }
     }
     return false;
-}
+};
 
 let configPath = ''; // 配置文件的路径
 let argTag = null; // 版本号
@@ -51,7 +51,7 @@ const args = process.argv.splice(2);
 // 第一个参数如果非参数形式默认作为版本号
 if (!/^-+[a-zA-Z]*$/.test(args[0])) {
     argTag = args[0];
-    lockVersion = LOCK_VERSION_MAP[!!argTag ? 'ENABLE' : 'DEFAULT'];
+    lockVersion = LOCK_VERSION_MAP[argTag ? 'ENABLE' : 'DEFAULT'];
 }
 for (let i = 0, len = args.length; i < len; i++) {
     if (args[i] === '-h') {
@@ -61,7 +61,7 @@ for (let i = 0, len = args.length; i < len; i++) {
     if (args[i] === '-v') {
         i++;
         argTag = args[i];
-        lockVersion = LOCK_VERSION_MAP[!!argTag ? 'ENABLE' : 'DEFAULT'];
+        lockVersion = LOCK_VERSION_MAP[argTag ? 'ENABLE' : 'DEFAULT'];
     }
     if (args[i] === '-c') {
         i++;
@@ -87,7 +87,7 @@ if (!configPath) {
 let packageJson = null;
 try {
     packageJson = require(configPath);
-} catch(error) {
+} catch (error) {
     shell.echo(`ERROR! please check file: "${configPath}"`);
     shell.echo(`ERROR MESSAGE: ${error.message}`);
     shell.exit(1);
@@ -133,11 +133,11 @@ if (lockVersion !== LOCK_VERSION_MAP.ENABLE) {
     let random = '' + parseInt(Math.random() * Math.pow(10, RANDOM_MAX));
     let m = date.getMonth() + 1;
     let d = date.getDate();
-    switch(lockVersion) {
-        case LOCK_VERSION_MAP.DATE: tag += `-${addZero(m)}${addZero(d)}`; break;
-        case LOCK_VERSION_MAP.RANDOM: tag += `-${addZero(random, RANDOM_MAX)}`; break;
-        default:
-            tag += `-${addZero(m)}${addZero(d)}${addZero(random, RANDOM_MAX)}`;
+    switch (lockVersion) {
+    case LOCK_VERSION_MAP.DATE: tag += `-${addZero(m)}${addZero(d)}`; break;
+    case LOCK_VERSION_MAP.RANDOM: tag += `-${addZero(random, RANDOM_MAX)}`; break;
+    default:
+        tag += `-${addZero(m)}${addZero(d)}${addZero(random, RANDOM_MAX)}`;
     }
 }
 
@@ -149,17 +149,19 @@ shell.echo(`VERSION: ${tag}`);
 shell.echo();
 shell.echo('========== build start ==========');
 
-shell.exit(1);
-
 shell.rm('./build.tar.gz');
 shell.exec('tar -zcvf build.tar.gz dist/* proxy/*');
 shell.rm('-rf', './build-image/dist/', './build-image/proxy/', './build-image/build.tar.gz');
 shell.mv('./build.tar.gz', './build-image/');
 
 shell.cd('./build-image/');
-shell.exec('tar -xf build.tar.gz');
+shell.exec('tar -zvxf build.tar.gz');
 
-shell.exec(`docker login -u ${harborConfig.user} --password ${harborConfig.password} ${harborConfig.host}`);
+if (harborConfig && harborConfig.host && harborConfig.user && harborConfig.password) {
+    shell.exec(`docker login -u ${harborConfig.user} --password ${harborConfig.password} ${harborConfig.host}`);
+} else {
+    shell.echo('harbor config not set, please ensure docker login.');
+}
 shell.exec(`docker rmi ${imageName}:${tag}`);
 shell.exec(`docker rmi ${imageHubName}:${tag}`);
 shell.exec(`docker build -t ${imageName}:${tag} .`);

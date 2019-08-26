@@ -143,3 +143,10 @@ config.json
     }
 }
 ```
+
+> 注意：harbor配置是用于docker登录，如不提供，请确保在执行build.image.js前，已经登录
+
+```bash
+# 登录命令参考
+docker login -u ${harborConfig.user} --password ${harborConfig.password} ${harborConfig.host}
+```
