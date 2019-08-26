@@ -5,8 +5,6 @@
 - vue全家桶：vue + vuex + vue-router + element-ui
 - @pci/common-ui：基于element-ui封装的 [公共组件库](http://172.25.20.65:4873/-/web/detail/@pci/common-ui)
 
-    > 需要配置npm register：npm set registry http://172.25.20.65:4873
-
 - loadsh：部分常用方法（如类型判断等）推荐使用 [lodash](https://www.lodashjs.com/docs/latest)
 
 ### 使用命令
