@@ -6,6 +6,9 @@ Vue.use(Router);
 
 export default new Router({
     routes: [
-        ExampleRoute('/')
+        ExampleRoute('/'),
+        {
+            path: '**', redirect: '/Page1'
+        }
     ]
 });

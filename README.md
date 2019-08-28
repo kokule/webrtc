@@ -7,24 +7,34 @@
 
 - loadsh：部分常用方法（如类型判断等）推荐使用 [lodash](https://www.lodashjs.com/docs/latest)
 
+### clone项目后，建议修改文件夹名称为项目名，并将关键词 template-vue 全局替换为项目名
+
 ### 使用命令
 
-- Project setup
+- 安装依赖
 ```bash
 npm install
 ```
 
-- Compiles and hot-reloads for development
+- 本地开发
 ```bash
 npm run serve
 ```
 
-- Compiles and minifies for production
+- 本地开发，代理使用mock.proxy.config.js
+
+> easyMock: http://172.25.20.65:7300/ 开发时推荐使用
+
+```bash
+npm run serve:mock
+```
+
+- 构建
 ```bash
 npm run build
 ```
 
-- build for proxy
+- 构建，更新proxy下的index.ejs
 ```bash
 npm run build:proxy
 ```

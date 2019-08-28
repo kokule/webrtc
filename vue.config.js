@@ -2,6 +2,11 @@ const webpack = require('webpack');
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const path = require('path');
 const proxy = require('./vue.proxy.config');
+const mockProxy = require('./mock.proxy.config');
+
+const isMock = !!process.argv.find(d => d === '--mock');
+
+let proxyConfig = isMock ? mockProxy : proxy;
 
 module.exports = {
     publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
@@ -24,7 +29,7 @@ module.exports = {
         host: '0.0.0.0',
         https: false,
         open: true,
-        proxy: proxy
+        proxy: proxyConfig
     },
     css: {
         loaderOptions: {
