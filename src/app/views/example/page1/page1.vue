@@ -2,6 +2,7 @@
     <div class="page1">
         page1
         <el-button size="mini" @click="handleClick">test</el-button>
+        <el-button size="mini" @click="deepClone">deepClone</el-button>
     </div>
 </template>
 
@@ -20,6 +21,13 @@ export default {
                     showClose: true
                 });
             });
+        },
+        deepClone () {
+            const obj = { a: 1, b: { c: 2 } };
+            const sObj = { ...obj };
+            const dObj = _.cloneDeep(obj);
+            console.log('shallow: ', sObj.b === obj.b);
+            console.log('deep: ', dObj.b === obj.b);
         }
     }
 };
