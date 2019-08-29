@@ -14,6 +14,7 @@ WORKDIR /app
 
 RUN rm -rf public/index.html
 
-EXPOSE 80
+# 仅声明
+EXPOSE 80 443
 
 CMD node server.js
