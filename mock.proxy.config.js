@@ -1,6 +1,6 @@
 module.exports = {
     '/test': {
-        target: ' http://172.25.20.65:7300',
+        target: 'http://172.25.20.65:7300',
         ws: false,
         changeOrigin: false,
         pathRewrite: {

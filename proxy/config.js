@@ -1,3 +1,20 @@
+// 服务配置
+const serverConfig = {
+    http: {
+        port: 80,
+        disabled: false,
+        timeout: 0
+    },
+    https: {
+        port: 443,
+        disabled: true,
+        timeout: 0,
+        key: '',
+        cert: ''
+    }
+};
+
+// 代理配置
 const proxy = [
     {
         context: ['/common-frontend'],
@@ -5,16 +22,9 @@ const proxy = [
         ws: false,
         changeOrigin: false,
         pathRewrite: {
-            '^/common-frontend': '',
-        },
-        disableProxyRes: true, // 不启用代理
-        onProxyRes(proxyRes, req, res) {
-            // let contentType = 'text/html;charset=UTF-8';
-            if (proxyRes.headers['Content-Type']) {
-                proxyRes.headers['Content-Type'] = ''; // 置为空
-            }
-        },
-    },
+            '^/common-frontend': ''
+        }
+    }
 ];
 
 // 需要注入的变量
@@ -23,6 +33,7 @@ const IMPORT_CONFIGS = {
 };
 
 module.exports = {
+    serverConfig,
     proxy,
     IMPORT_CONFIGS
 };
