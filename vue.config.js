@@ -34,7 +34,7 @@ module.exports = {
     css: {
         loaderOptions: {
             sass: {
-                data: '@import "./src/theme/index.scss";'
+                data: '@import "~ecp-ui/styles/var";'
             }
         }
     },
@@ -59,6 +59,6 @@ module.exports = {
     transpileDependencies: [
         'vue-echarts',
         'resize-detector',
-        '@pci/common-ui'
+        'ecp-ui'
     ]
 };

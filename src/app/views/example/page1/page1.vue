@@ -1,8 +1,8 @@
 <template>
-    <div class="page1">
+    <div class="page1 ma-3">
         page1
-        <el-button size="mini" @click="handleClick">test</el-button>
-        <el-button size="mini" @click="deepClone">deepClone</el-button>
+        <ecp-button @click="handleClick" text="test"></ecp-button>
+        <ecp-button @click="deepClone" text="deepClone"></ecp-button>
     </div>
 </template>
 

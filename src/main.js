@@ -1,5 +1,6 @@
 import './polyfills';
 import './plugins';
+import './theme/_index.scss';
 import './styles.scss';
 
 import Vue from 'vue';
