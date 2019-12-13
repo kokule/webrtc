@@ -813,20 +813,6 @@
   resolved "http://172.25.20.65:4873/@nodelib%2ffs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
-"@pci/common-ui@^0.0.2":
-  version "0.0.2"
-  resolved "http://172.25.20.65:4873/@pci%2fcommon-ui/-/common-ui-0.0.2.tgz#a48fbb3dcbba4736d1f2cf4e4c3ecaf1e1f29773"
-  integrity sha512-Xs5KB1ZQknOYo8xqC3hpcIDl++XXOGj+eH1hMyoGqzq9zyiBfWVXwxxBBM4WhzGADRDfZSSfD5rX9LuebPYbPw==
-  dependencies:
-    d3 "^5.9.7"
-    echarts "^4.2.1"
-    element-ui "~2.9.2"
-    moment "^2.24.0"
-    resize-observer-polyfill "^1.5.1"
-    rxjs "^6.5.2"
-    sharedworker-loader "^2.1.1"
-    vue-echarts "^4.0.3"
-
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
   resolved "http://172.25.20.65:4873/@samverschueren%2fstream-to-observable/-/stream-to-observable-0.3.0.tgz#ecdf48d532c58ea477acfcab80348424f8d0662f"
@@ -842,6 +828,11 @@
     chalk "^1.1.3"
     error-stack-parser "^2.0.0"
     string-width "^2.0.0"
+
+"@sphinxxxx/color-conversion@^2.2.2":
+  version "2.2.2"
+  resolved "http://172.25.20.65:4873/@sphinxxxx%2fcolor-conversion/-/color-conversion-2.2.2.tgz#03ecc29279e3c0c832f6185a5bfa3497858ac8ca"
+  integrity sha1-A+zCknnjwMgy9hhaW/o0l4WKyMo=
 
 "@types/events@*":
   version "3.0.0"
@@ -1273,6 +1264,11 @@ accepts@~1.3.4, accepts@~1.3.5, accepts@~1.3.7:
     mime-types "~2.1.24"
     negotiator "0.6.2"
 
+ace-builds@^1.4.7:
+  version "1.4.7"
+  resolved "http://172.25.20.65:4873/ace-builds/-/ace-builds-1.4.7.tgz#56e5465270b6c48a48d30e70d6b8f6b92fbf2b08"
+  integrity sha1-VuVGUnC2xIpI0w5w1rj2uS+/Kwg=
+
 acorn-dynamic-import@^3.0.0:
   version "3.0.0"
   resolved "http://172.25.20.65:4873/acorn-dynamic-import/-/acorn-dynamic-import-3.0.0.tgz#901ceee4c7faaef7e07ad2a47e890675da50a278"
@@ -1346,6 +1342,16 @@ ajv@^6.1.0, ajv@^6.5.5, ajv@^6.9.1:
   version "6.10.1"
   resolved "http://172.25.20.65:4873/ajv/-/ajv-6.10.1.tgz#ebf8d3af22552df9dd049bfbe50cc2390e823593"
   integrity sha512-w1YQaVGNC6t2UCPjEawK/vo/dG8OOrVtUmhBT1uJJYxbl5kU2Tj3v6LGqBcsysN1yhuCStJCCA3GqdvKY8sqXQ==
+  dependencies:
+    fast-deep-equal "^2.0.1"
+    fast-json-stable-stringify "^2.0.0"
+    json-schema-traverse "^0.4.1"
+    uri-js "^4.2.2"
+
+ajv@^6.10.2:
+  version "6.10.2"
+  resolved "http://172.25.20.65:4873/ajv/-/ajv-6.10.2.tgz#d3cea04d6b017b2894ad69040fec8b623eb4bd52"
+  integrity sha1-086gTWsBeyiUrWkED+yLYj60vVI=
   dependencies:
     fast-deep-equal "^2.0.1"
     fast-json-stable-stringify "^2.0.0"
@@ -2296,6 +2302,11 @@ code-point-at@^1.0.0:
   resolved "http://172.25.20.65:4873/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
   integrity sha1-DQcLTQQ6W+ozovGkDi7bPZpMz3c=
 
+codemirror@^5.41.0:
+  version "5.49.2"
+  resolved "http://172.25.20.65:4873/codemirror/-/codemirror-5.49.2.tgz#c84fdaf11b19803f828b0c67060c7bc6d154ccad"
+  integrity sha1-yE/a8RsZgD+CiwxnBgx7xtFUzK0=
+
 collection-visit@^1.0.0:
   version "1.0.0"
   resolved "http://172.25.20.65:4873/collection-visit/-/collection-visit-1.0.0.tgz#4bc0373c164bc3291b4d368c829cf1a80a59dca0"
@@ -3237,6 +3248,11 @@ detect-node@^2.0.4:
   resolved "http://172.25.20.65:4873/detect-node/-/detect-node-2.0.4.tgz#014ee8f8f669c5c58023da64b8179c083a28c46c"
   integrity sha512-ZIzRpLJrOj7jjP2miAtgqIfmzbxa4ZOr5jJc601zklsfEx9oTzmmj2nVpIPRpNlRTIh8lc1kyViIY7BWSGNmKw==
 
+diff-match-patch@^1.0.0:
+  version "1.0.4"
+  resolved "http://172.25.20.65:4873/diff-match-patch/-/diff-match-patch-1.0.4.tgz#6ac4b55237463761c4daf0dc603eb869124744b1"
+  integrity sha1-asS1UjdGN2HE2vDcYD64aRJHRLE=
+
 diffie-hellman@^5.0.0:
   version "5.0.3"
   resolved "http://172.25.20.65:4873/diffie-hellman/-/diffie-hellman-5.0.3.tgz#40e8ee98f55a2149607146921c63e1ae5f3d2875"
@@ -3309,6 +3325,13 @@ dom-serializer@0:
   dependencies:
     domelementtype "^1.3.0"
     entities "^1.1.1"
+
+dom7@^2.1.3:
+  version "2.1.3"
+  resolved "http://172.25.20.65:4873/dom7/-/dom7-2.1.3.tgz#a736f9c3bfbc4ca039a81cd095f97d1d7f3de19c"
+  integrity sha1-pzb5w7+8TKA5qBzQlfl9HX894Zw=
+  dependencies:
+    ssr-window "^1.0.1"
 
 domain-browser@^1.1.1:
   version "1.2.0"
@@ -3395,6 +3418,23 @@ echarts@^4.2.1:
   dependencies:
     zrender "4.0.7"
 
+ecp-ui@^1.0.14:
+  version "0.1.14"
+  resolved "http://172.25.20.65:4873/ecp-ui/-/ecp-ui-0.1.14.tgz#803d8982cbaaf7f5ef4cd91295d766e0de575e12"
+  integrity sha512-LT4v/WSQjM7xCA1nPT3qYvX0ysScueRqafQgGR7aKTLtPjsIPk1j96D6KGJga+6kyFU5kHFvHvx/3m+HGIPNTA==
+  dependencies:
+    d3 "^5.9.7"
+    echarts "^4.2.1"
+    element-ui "^2.11.0"
+    jsoneditor "^7.2.1"
+    moment "^2.24.0"
+    normalize.css "^8.0.1"
+    resize-observer-polyfill "^1.5.1"
+    rxjs "^6.5.2"
+    vue-awesome-swiper "^3.1.3"
+    vue-codemirror "^4.0.6"
+    vue-echarts "^4.0.3"
+
 ee-first@1.1.1:
   version "1.1.1"
   resolved "http://172.25.20.65:4873/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
@@ -3415,10 +3455,10 @@ elegant-spinner@^1.0.1:
   resolved "http://172.25.20.65:4873/elegant-spinner/-/elegant-spinner-1.0.1.tgz#db043521c95d7e303fd8f345bedc3349cfb0729e"
   integrity sha1-2wQ1IcldfjA/2PNFvtwzSc+wcp4=
 
-element-ui@~2.9.2:
-  version "2.9.2"
-  resolved "http://172.25.20.65:4873/element-ui/-/element-ui-2.9.2.tgz#f02b6b1dfb937044addbf204eaa15860d544ad84"
-  integrity sha1-8CtrHfuTcESt2/IE6qFYYNVErYQ=
+element-ui@^2.11.0:
+  version "2.13.0"
+  resolved "http://172.25.20.65:4873/element-ui/-/element-ui-2.13.0.tgz#f6bb04e5b0a76ea5f62466044b774407ba4ebd2d"
+  integrity sha1-9rsE5bCnbqX2JGYES3dEB7pOvS0=
   dependencies:
     async-validator "~1.8.1"
     babel-helper-vue-jsx-merge-props "^2.0.0"
@@ -5301,10 +5341,20 @@ isstream@~0.1.2:
   resolved "http://172.25.20.65:4873/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
   integrity sha1-R+Y/evVa+m+S4VAOaQ64uFKcCZo=
 
+javascript-natural-sort@^0.7.1:
+  version "0.7.1"
+  resolved "http://172.25.20.65:4873/javascript-natural-sort/-/javascript-natural-sort-0.7.1.tgz#f9e2303d4507f6d74355a73664d1440fb5a0ef59"
+  integrity sha1-+eIwPUUH9tdDVac2ZNFED7Wg71k=
+
 javascript-stringify@^1.6.0:
   version "1.6.0"
   resolved "http://172.25.20.65:4873/javascript-stringify/-/javascript-stringify-1.6.0.tgz#142d111f3a6e3dae8f4a9afd77d45855b5a9cce3"
   integrity sha1-FC0RHzpuPa6PSpr9d9RYVbWpzOM=
+
+jmespath@^0.15.0:
+  version "0.15.0"
+  resolved "http://172.25.20.65:4873/jmespath/-/jmespath-0.15.0.tgz#a3f222a9aae9f966f5d27c796510e28091764217"
+  integrity sha1-o/Iiqarp+Wb10nx5ZRDigJF2Qhc=
 
 js-levenshtein@^1.1.3:
   version "1.1.6"
@@ -5376,6 +5426,11 @@ json-schema@0.2.3:
   resolved "http://172.25.20.65:4873/json-schema/-/json-schema-0.2.3.tgz#b480c892e59a2f05954ce727bd3f2a4e882f9e13"
   integrity sha1-tIDIkuWaLwWVTOcnvT8qTogvnhM=
 
+json-source-map@^0.6.1:
+  version "0.6.1"
+  resolved "http://172.25.20.65:4873/json-source-map/-/json-source-map-0.6.1.tgz#e0b1f6f4ce13a9ad57e2ae165a24d06e62c79a0f"
+  integrity sha1-4LH29M4Tqa1X4q4WWiTQbmLHmg8=
+
 json-stable-stringify-without-jsonify@^1.0.1:
   version "1.0.1"
   resolved "http://172.25.20.65:4873/json-stable-stringify-without-jsonify/-/json-stable-stringify-without-jsonify-1.0.1.tgz#9db7b59496ad3f3cfef30a75142d2d930ad72651"
@@ -5409,6 +5464,20 @@ json5@^2.1.0:
   integrity sha512-8Mh9h6xViijj36g7Dxi+Y4S6hNGV96vcJZr/SrlHh1LR/pEn/8j/+qIBbs44YKl69Lrfctp4QD+AdWLTMqEZAQ==
   dependencies:
     minimist "^1.2.0"
+
+jsoneditor@^7.2.1:
+  version "7.5.0"
+  resolved "http://172.25.20.65:4873/jsoneditor/-/jsoneditor-7.5.0.tgz#5ddea26c1256ec348dff0a88e75317fcd7f6a618"
+  integrity sha1-Xd6ibBJW7DSN/wqI51MX/Nf2phg=
+  dependencies:
+    ace-builds "^1.4.7"
+    ajv "^6.10.2"
+    javascript-natural-sort "^0.7.1"
+    jmespath "^0.15.0"
+    json-source-map "^0.6.1"
+    mobius1-selectr "^2.4.13"
+    picomodal "^3.0.0"
+    vanilla-picker "^2.10.0"
 
 jsonfile@^4.0.0:
   version "4.0.0"
@@ -5598,7 +5667,7 @@ loader-utils@^0.2.16:
     json5 "^0.5.0"
     object-assign "^4.0.1"
 
-loader-utils@^1.0.0, loader-utils@^1.0.1, loader-utils@^1.0.2, loader-utils@^1.1.0, loader-utils@^1.2.3:
+loader-utils@^1.0.1, loader-utils@^1.0.2, loader-utils@^1.1.0, loader-utils@^1.2.3:
   version "1.2.3"
   resolved "http://172.25.20.65:4873/loader-utils/-/loader-utils-1.2.3.tgz#1ff5dc6911c9f0a062531a4c04b609406108c2c7"
   integrity sha1-H/XcaRHJ8KBiUxpMBLYJQGEIwsc=
@@ -6001,6 +6070,11 @@ mkdirp@0.5.1, mkdirp@0.5.x, mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkdirp@
   integrity sha1-MAV0OOrGz3+MR2fzhkjWaX11yQM=
   dependencies:
     minimist "0.0.8"
+
+mobius1-selectr@^2.4.13:
+  version "2.4.13"
+  resolved "http://172.25.20.65:4873/mobius1-selectr/-/mobius1-selectr-2.4.13.tgz#0019dfd9f984840d6e40f70683ab3ec78ce3b5df"
+  integrity sha1-ABnf2fmEhA1uQPcGg6s+x4zjtd8=
 
 moment@^2.24.0:
   version "2.24.0"
@@ -6729,6 +6803,11 @@ picomatch@^2.0.4:
   version "2.0.7"
   resolved "http://172.25.20.65:4873/picomatch/-/picomatch-2.0.7.tgz#514169d8c7cd0bdbeecc8a2609e34a7163de69f6"
   integrity sha512-oLHIdio3tZ0qH76NybpeneBhYVj0QFTfXEFTc/B3zKQspYfYYkWYgFsmzo+4kvId/bQRcNkVeguI3y+CD22BtA==
+
+picomodal@^3.0.0:
+  version "3.0.0"
+  resolved "http://172.25.20.65:4873/picomodal/-/picomodal-3.0.0.tgz#facd30f4fbf34a809c1e04ea525f004f399c0b82"
+  integrity sha1-+s0w9PvzSoCcHgTqUl8ATzmcC4I=
 
 pify@^2.0.0:
   version "2.3.0"
@@ -7821,7 +7900,7 @@ sax@^1.2.4, sax@~1.2.4:
   resolved "http://172.25.20.65:4873/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
   integrity sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==
 
-schema-utils@^0.4.0, schema-utils@^0.4.4:
+schema-utils@^0.4.4:
   version "0.4.7"
   resolved "http://172.25.20.65:4873/schema-utils/-/schema-utils-0.4.7.tgz#ba74f597d2be2ea880131746ee17d0a093c68187"
   integrity sha1-unT1l9K+LqiAExdG7hfQoJPGgYc=
@@ -7958,14 +8037,6 @@ shallow-clone@^1.0.0:
     is-extendable "^0.1.1"
     kind-of "^5.0.0"
     mixin-object "^2.0.1"
-
-sharedworker-loader@^2.1.1:
-  version "2.1.1"
-  resolved "http://172.25.20.65:4873/sharedworker-loader/-/sharedworker-loader-2.1.1.tgz#0bebdb9660f580e685326dac66ae79d76f01f215"
-  integrity sha1-C+vblmD1gOaFMm2sZq55128B8hU=
-  dependencies:
-    loader-utils "^1.0.0"
-    schema-utils "^0.4.0"
 
 shebang-command@^1.2.0:
   version "1.2.0"
@@ -8220,6 +8291,11 @@ sshpk@^1.7.0:
     safer-buffer "^2.0.2"
     tweetnacl "~0.14.0"
 
+ssr-window@^1.0.1:
+  version "1.0.1"
+  resolved "http://172.25.20.65:4873/ssr-window/-/ssr-window-1.0.1.tgz#30752a6a4666e7767f0b7e6aa6fc2fdbd0d9b369"
+  integrity sha1-MHUqakZm53Z/C35qpvwv29DZs2k=
+
 ssri@^5.2.4:
   version "5.3.0"
   resolved "http://172.25.20.65:4873/ssri/-/ssri-5.3.0.tgz#ba3872c9c6d33a0704a7d71ff045e5ec48999d06"
@@ -8469,6 +8545,14 @@ svgo@^1.0.0:
     stable "^0.1.8"
     unquote "~1.1.1"
     util.promisify "~1.0.0"
+
+swiper@^4.0.7:
+  version "4.5.1"
+  resolved "http://172.25.20.65:4873/swiper/-/swiper-4.5.1.tgz#ed43998e780ceb478610079c8d23fd425eca636f"
+  integrity sha1-7UOZjngM60eGEAecjSP9Ql7KY28=
+  dependencies:
+    dom7 "^2.1.3"
+    ssr-window "^1.0.1"
 
 symbol-observable@^1.1.0:
   version "1.2.0"
@@ -8935,6 +9019,13 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
 
+vanilla-picker@^2.10.0:
+  version "2.10.0"
+  resolved "http://172.25.20.65:4873/vanilla-picker/-/vanilla-picker-2.10.0.tgz#36676631b9346daa6b93aa4f80c541f113e38c50"
+  integrity sha1-NmdmMbk0baprk6pPgMVB8RPjjFA=
+  dependencies:
+    "@sphinxxxx/color-conversion" "^2.2.2"
+
 vary@~1.1.2:
   version "1.1.2"
   resolved "http://172.25.20.65:4873/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
@@ -8958,6 +9049,22 @@ vm-browserify@^1.0.1:
   version "1.1.0"
   resolved "http://172.25.20.65:4873/vm-browserify/-/vm-browserify-1.1.0.tgz#bd76d6a23323e2ca8ffa12028dc04559c75f9019"
   integrity sha512-iq+S7vZJE60yejDYM0ek6zg308+UZsdtPExWP9VZoCFCz1zkJoXFnAX7aZfd/ZwrkidzdUZL0C/ryW+JwAiIGw==
+
+vue-awesome-swiper@^3.1.3:
+  version "3.1.3"
+  resolved "http://172.25.20.65:4873/vue-awesome-swiper/-/vue-awesome-swiper-3.1.3.tgz#05500b501ffb3fec9bf7eb9985bcf4ae8360ed9e"
+  integrity sha1-BVALUB/7P+yb9+uZhbz0roNg7Z4=
+  dependencies:
+    object-assign "^4.1.1"
+    swiper "^4.0.7"
+
+vue-codemirror@^4.0.6:
+  version "4.0.6"
+  resolved "http://172.25.20.65:4873/vue-codemirror/-/vue-codemirror-4.0.6.tgz#b786bb80d8d762a93aab8e46f79a81006f0437c4"
+  integrity sha1-t4a7gNjXYqk6q45G95qBAG8EN8Q=
+  dependencies:
+    codemirror "^5.41.0"
+    diff-match-patch "^1.0.0"
 
 vue-echarts@^4.0.3:
   version "4.0.3"

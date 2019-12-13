@@ -21,12 +21,11 @@
     "dependencies": {
         "axios": "^0.19.0",
         "blob": "^0.0.5",
-        "@pci/common-ui": "^0.0.10",
+        "ecp-ui": "^0.0.14",
         "compression-webpack-plugin": "^3.0.0",
         "core-js": "^2.6.5",
         "form-data": "^2.5.0",
         "lodash": "^4.17.11",
-        "normalize.css": "^8.0.1",
         "vue": "^2.6.10",
         "vue-router": "^3.0.3",
         "vuex": "^3.0.1"
