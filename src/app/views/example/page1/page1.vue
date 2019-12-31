@@ -1,7 +1,7 @@
 <template>
     <div class="page1 ma-3">
         page1
-        <ecp-button @click="handleClick" text="test"></ecp-button>
+        <ecp-button type="primary" @click="handleClick" text="test"></ecp-button>
         <ecp-button @click="deepClone" text="deepClone"></ecp-button>
     </div>
 </template>
@@ -34,7 +34,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-    .page1 {
-
-    }
+.page1 {
+}
 </style>
