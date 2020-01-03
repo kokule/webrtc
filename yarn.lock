@@ -3418,10 +3418,10 @@ echarts@^4.2.1:
   dependencies:
     zrender "4.0.7"
 
-ecp-ui@^1.0.14:
-  version "0.1.14"
-  resolved "http://172.25.20.65:4873/ecp-ui/-/ecp-ui-0.1.14.tgz#803d8982cbaaf7f5ef4cd91295d766e0de575e12"
-  integrity sha512-LT4v/WSQjM7xCA1nPT3qYvX0ysScueRqafQgGR7aKTLtPjsIPk1j96D6KGJga+6kyFU5kHFvHvx/3m+HGIPNTA==
+ecp-ui@^0.1.17:
+  version "0.1.17"
+  resolved "http://172.25.20.65:4873/ecp-ui/-/ecp-ui-0.1.17.tgz#4ff36b329773684ac9ec57338d5074b14093ab87"
+  integrity sha512-apFXY9Sk8JcK2Oc1sJ/6gIcR9FVWcKXd44MBVE5DRSBBtqgbCUBEoJJLCeID+tILdWZateOO6aothHsmMZ+4jQ==
   dependencies:
     d3 "^5.9.7"
     echarts "^4.2.1"

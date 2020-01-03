@@ -34,7 +34,7 @@ module.exports = {
     css: {
         loaderOptions: {
             sass: {
-                data: '@import "~ecp-ui/styles/var";'
+                data: '@import "./src/theme/import.scss";'
             }
         }
     },
