@@ -3,6 +3,8 @@
         page1
         <ecp-button type="primary" @click="handleClick" text="test"></ecp-button>
         <ecp-button @click="deepClone" text="deepClone"></ecp-button>
+        <br />
+        <router-link to="/Page2">TO Page2</router-link>
     </div>
 </template>
 

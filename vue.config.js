@@ -34,7 +34,8 @@ module.exports = {
     css: {
         loaderOptions: {
             sass: {
-                data: '@import "./src/theme/import.scss";'
+                // data: '@import "./src/theme/darken/import.scss";'
+                data: '@import "./src/theme/default/import.scss";'
             }
         }
     },
