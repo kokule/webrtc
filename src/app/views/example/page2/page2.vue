@@ -17,6 +17,6 @@ export default {
 
 <style scoped lang="scss">
     .page2 {
-        border: 3px solid $--color-primary;
+        // border: 3px solid $--color-primary;
     }
 </style>

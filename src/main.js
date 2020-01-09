@@ -13,6 +13,16 @@ import * as Api from './app/api';
 Vue.use(CommonPart);
 Vue.prototype.$api = Api;
 
+// 设置主题
+var eleLinks = document.querySelectorAll('link[title]');
+const links = [...eleLinks];
+const THEME = 'default';
+// const THEME = 'darken';
+eleLinks.forEach(link => {
+    link.disabled = true;
+    link.disabled = link.title !== THEME;
+});
+
 Vue.config.productionTip = false;
 
 new Vue({
