@@ -10,6 +10,12 @@ import store from './app/store';
 import CommonPart from './common';
 import * as Api from './app/api';
 
+// 调试主题
+if (process.env.NODE_ENV !== 'production') {
+    require('@/theme/default/index.scss');
+    // require('@/theme/darken/index.scss');
+}
+
 Vue.use(CommonPart);
 Vue.prototype.$api = Api;
 

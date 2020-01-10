@@ -38,7 +38,7 @@
         "babel-eslint": "^10.0.1",
         "compression": "^1.7.4",
         "compression-webpack-plugin": "^3.0.0",
-        "ecp-theme-webpack-plugin": "^0.0.3",
+        "ecp-theme-webpack-plugin": "^0.1.1",
         "eslint": "^5.16.0",
         "eslint-plugin-vue": "^5.0.0",
         "lint-staged": "^8.1.5",
