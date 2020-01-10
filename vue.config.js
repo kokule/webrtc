@@ -3,6 +3,7 @@ const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const path = require('path');
 const proxy = require('./vue.proxy.config');
 const mockProxy = require('./mock.proxy.config');
+const EcpThemeWebpackPlugin = require('ecp-theme-webpack-plugin');
 
 const isMock = !!process.argv.find(d => d === '--mock');
 
@@ -53,6 +54,12 @@ module.exports = {
             new webpack.ProvidePlugin({
                 _: 'lodash',
                 Axios: 'axios'
+            }),
+            new EcpThemeWebpackPlugin({
+                entry: {
+                    default: './src/theme/default/index.scss',
+                    darken: './src/theme/darken/index.scss'
+                }
             })
         ]
     },

@@ -1,3 +1,7 @@
 @import './import';
 @import "~ecp-ui/styles/index.scss";
 @import '../default/components/_index.scss';
+
+body {
+    padding: 20px;
+}
