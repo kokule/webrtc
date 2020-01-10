@@ -8,7 +8,7 @@ export default new Router({
     routes: [
         ExampleRoute('/'),
         {
-            path: '**', redirect: '/Page1'
+            path: '*', redirect: '/Page1'
         }
     ]
 });

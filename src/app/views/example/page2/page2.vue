@@ -1,5 +1,9 @@
 <template>
-    <div class="page2">page2</div>
+    <div class="page2">
+        page2<br />
+        <ecp-icon icon="el-icon-user"></ecp-icon><br />
+        <router-link to="/Page1">TO Page1</router-link>
+    </div>
 </template>
 
 <script>
@@ -14,6 +18,6 @@ export default {
 
 <style scoped lang="scss">
     .page2 {
-
+        // border: 3px solid $--color-primary;
     }
 </style>
