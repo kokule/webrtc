@@ -3,6 +3,7 @@ const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const path = require('path');
 const proxy = require('./vue.proxy.config');
 const mockProxy = require('./mock.proxy.config');
+const EcpVersionWebpackPlugin = require('@ecp/version-webpack-plugin');
 
 const isMock = !!process.argv.find(d => d === '--mock');
 
@@ -53,7 +54,8 @@ module.exports = {
             new webpack.ProvidePlugin({
                 _: 'lodash',
                 Axios: 'axios'
-            })
+            }),
+            new EcpVersionWebpackPlugin()
         ]
     },
 
