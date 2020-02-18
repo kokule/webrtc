@@ -3554,10 +3554,10 @@ echarts@^4.2.1:
   dependencies:
     zrender "4.0.7"
 
-ecp-ui@^0.2.7:
-  version "0.2.7"
-  resolved "http://172.25.20.65:4873/ecp-ui/-/ecp-ui-0.2.7.tgz#0b4602fff02f0f39c4e5320c4b00e1f8b37ed3e1"
-  integrity sha512-D7DZdfG9OWjzFTKs1GZ2j4t5g1qCda1uHa4l0Q64BZyY7oJ/22pC5BYfsPwMfVrhIecv4aFgAFBNqy/YX/8/xA==
+ecp-ui@^1.0.0:
+  version "1.0.0"
+  resolved "http://172.25.20.65:4873/ecp-ui/-/ecp-ui-1.0.0.tgz#6792245404d3b63115e2f0a9f4da3ec4382070d1"
+  integrity sha512-llqiYATWu2HgMiSaLKolAbiWzfXIYmTwWg3r0GmvXSJpuqkIJ0FRABS3Iy9MfDQ71tb1SVRN2Jbg4c75hBqrhQ==
   dependencies:
     "@babel/plugin-proposal-class-properties" "^7.7.4"
     d3 "^5.9.7"
