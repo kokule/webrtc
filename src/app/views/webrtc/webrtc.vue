@@ -9,7 +9,7 @@
 </template>
 
 <script>
-    import leftList from './compoments/left-list';
+    import leftList from './compoments/left-list/left-list';
 
     export default {
         name: 'webrtc',

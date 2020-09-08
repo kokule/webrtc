@@ -2,7 +2,7 @@
     <div class="left-list">
         <div class="left-list-top">
             <div class="title-img">
-                <img src="../../../../assets/deco_title.png"/>
+                <img src="../../../../../assets/deco_title.png"/>
             </div>
             <div class="title">融合通讯</div>
             <div class="title-bg"></div>
@@ -21,7 +21,7 @@
                     <div class="group-item" v-for="(item, index) in 5" :class="{'choose': isActiveIndex === index}"
                          @click="isActiveIndex = index">
                         <div class="item-img" v-show="isActiveIndex === index">
-                            <img src="../../../../assets/choose.png">
+                            <img src="../../../../../assets/choose.png">
                         </div>
                         <div style="width: 98%">
                             <p>智慧城市事业部 <span :class="{'active' : isActiveIndex === index}">30</span></p></div>
@@ -39,6 +39,7 @@
                                 height="100%"
                                 class="ecp-table"
                                 :data="tableData"
+                                @row-click="clickPerson"
                                 highlight-current-row
                                 :header-row-style="headerStyle"
                                 style="width: 100%">
@@ -63,9 +64,9 @@
                         </template>
                     </div>
                     <div class="group-button">
-                        <img style="margin-right: 10px" src="../../../../assets/video.png">
-                        <img src="../../../../assets/phone.png">
-                        <img style="float: right" src="../../../../assets/history.png">
+                        <img style="margin-right: 10px" src="../../../../../assets/video.png">
+                        <img src="../../../../../assets/phone.png">
+                        <img style="float: right" src="../../../../../assets/history.png">
                     </div>
                     <div class="input-message">
                         <el-input
@@ -79,12 +80,18 @@
                 </div>
             </div>
         </div>
+        <video-dialog ref="videoDialog"></video-dialog>
     </div>
 </template>
 
 <script>
+    import videoDialog from '../video-dialog/video-dialog';
+
     export default {
         name: 'left-list',
+        components: {
+            videoDialog
+        },
         data () {
             return {
                 memberName: '',
@@ -121,6 +128,12 @@
                     }
                 ]
             };
+        },
+        methods: {
+            clickPerson (row, column, event) {
+                console.log(row);
+                this.$refs.videoDialog.dialogVisible = true;
+            }
         }
     };
 </script>
@@ -220,7 +233,7 @@
                     float: left;
                     width: 6px;
                     height: 20px;
-                    margin:2px  10px 0 0;
+                    margin: 2px 10px 0 0;
                     background: #77eeff;
                 }
 
@@ -327,7 +340,7 @@
             top: 0;
             z-index: 10;
             background: no-repeat;
-            background-image: url("../../../../assets/rightBorder.png");
+            background-image: url("../../../../../assets/rightBorder.png");
         }
 
     }
