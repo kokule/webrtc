@@ -20,7 +20,7 @@
             return {};
         },
         mounted () {
-            this.initMap();
+            // this.initMap();
         },
         methods: {
             initMap () {
@@ -58,6 +58,7 @@
     .webrtc {
         width: 100%;
         height: 100%;
+        background: black;
 
         header {
             width: 100%;

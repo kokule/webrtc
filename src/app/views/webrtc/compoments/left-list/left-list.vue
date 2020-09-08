@@ -64,23 +64,23 @@
                         </template>
                     </div>
                     <div class="group-button">
-                        <img style="margin-right: 10px" src="../../../../../assets/video.png">
-                        <img src="../../../../../assets/phone.png">
-                        <img style="float: right" src="../../../../../assets/history.png">
+                        <img @click="callUserVideo" style="margin-right: 10px" src="@assets/video.png">
+                        <img src="@assets/phone.png">
+                        <img style="float: right" src="@assets/history.png">
                     </div>
                     <div class="input-message">
                         <el-input
                             type="textarea"
                             :autosize="{ minRows: 5, maxRows: 5}"
-                            placeholder="请输入内容"
-                            v-model="textarea">
+                            placeholder="请输入推送消息"
+                            v-model="sendMessage">
                         </el-input>
                     </div>
-                    <ecp-button type="primary" text="短信推送" style="float: right"></ecp-button>
+                    <ecp-button type="primary" @click="setUser" text="短信推送" style="float: right"></ecp-button>
                 </div>
             </div>
         </div>
-        <video-dialog ref="videoDialog"></video-dialog>
+        <video-dialog ref="videoDialog" :otherUser="currentUser"></video-dialog>
     </div>
 </template>
 
@@ -92,47 +92,45 @@
         components: {
             videoDialog
         },
-        data () {
+        data() {
             return {
                 memberName: '',
                 isActiveIndex: 0,
-                textarea: '',
+                sendMessage: 'lingling',
+                currentUser: null,
                 headerStyle: {
                     background: '#06131F',
                     color: '#E1A51A',
                 },
                 tableData: [
                     {
-                        name: '张三',
+                        name: 'qinkai',
                         phone: '15949388635'
                     },
                     {
-                        name: '张三',
+                        name: 'kokule',
                         phone: '45346873546'
                     },
                     {
-                        name: '东山街道',
-                        phone: '45346874346'
-                    },
-                    {
-                        name: '张三',
-                        phone: '45346874546'
-                    },
-                    {
-                        name: '张三',
-                        phone: '45368743546'
-                    },
-                    {
-                        name: '张三',
-                        phone: '45346743546'
+                        name: 'lingling',
+                        phone: '17563245896'
                     }
                 ]
             };
         },
         methods: {
-            clickPerson (row, column, event) {
+            clickPerson(row, column, event) {
                 console.log(row);
+                this.currentUser = row
                 this.$refs.videoDialog.dialogVisible = true;
+            },
+            callUserVideo() {
+                this.$refs.videoDialog.targetUser.userId = this.currentUser.name
+                this.$refs.videoDialog.callVideo()
+            },
+            setUser() {
+                this.$refs.videoDialog.loginUser.userId = this.sendMessage
+                this.$refs.videoDialog.userLogin()
             }
         }
     };
@@ -202,7 +200,6 @@
                 border-color: transparent transparent transparent #01112a;
             }
         }
-
 
         &-box-bg {
             height: 95%;
