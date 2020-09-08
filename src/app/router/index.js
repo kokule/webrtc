@@ -1,14 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import { ExampleRoute } from '../views/example/example.route';
-
+import routes from './routes';
 Vue.use(Router);
 
 export default new Router({
-    routes: [
-        ExampleRoute('/'),
-        {
-            path: '*', redirect: '/Page1'
-        }
-    ]
+    routes
 });

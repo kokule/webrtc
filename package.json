@@ -1,7 +1,7 @@
 {
-    "name": "template-vue",
+    "name": "ar-technology-platform",
     "version": "0.1.0",
-    "imageName": "template-vue",
+    "imageName": "ar-technology-platform",
     "imageHubName": "harbor.pcitech.com/prophet/template-vue",
     "harbor": {
         "user": "admin",
