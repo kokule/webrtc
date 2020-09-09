@@ -2,7 +2,7 @@
     <div class="left-list">
         <div class="left-list-top">
             <div class="title-img">
-                <img src="../../../../../assets/deco_title.png"/>
+                <img src="../../../../../assets/webrtc/deco_title.png"/>
             </div>
             <div class="title">融合通讯</div>
             <div class="title-bg"></div>
@@ -21,7 +21,7 @@
                     <div class="group-item" v-for="(item, index) in 5" :class="{'choose': isActiveIndex === index}"
                          @click="isActiveIndex = index">
                         <div class="item-img" v-show="isActiveIndex === index">
-                            <img src="../../../../../assets/choose.png">
+                            <img src="../../../../../assets/webrtc/choose.png">
                         </div>
                         <div style="width: 98%">
                             <p>智慧城市事业部 <span :class="{'active' : isActiveIndex === index}">30</span></p></div>
@@ -64,9 +64,9 @@
                         </template>
                     </div>
                     <div class="group-button">
-                        <img @click="callUserVideo" style="margin-right: 10px" src="@assets/video.png">
-                        <img src="@assets/phone.png">
-                        <img style="float: right" src="@assets/history.png">
+                        <img @click="callUserVideo" style="margin-right: 10px" src="@assets/webrtc/video.png">
+                        <img src="@assets/webrtc/phone.png">
+                        <img style="float: right" src="@assets/webrtc/history.png">
                     </div>
                     <div class="input-message">
                         <el-input
@@ -337,7 +337,7 @@
             top: 0;
             z-index: 10;
             background: no-repeat;
-            background-image: url("../../../../../assets/rightBorder.png");
+            background-image: url("../../../../../assets/webrtc/rightBorder.png");
         }
 
     }

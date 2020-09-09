@@ -6,6 +6,16 @@ export default [
         redirect: '/webrtc'
     },
     {
+        path: '/login',
+        name: 'login',
+        component: () => import('@views/login/login.vue')
+    },
+    {
+        path: '/webrtc',
+        name: 'webRTC',
+        component: () => import('@views/webrtc/webrtc.vue')
+    },
+    {
         path: '/resource-allocation',
         name: 'resourceAllocation',
         component: Header,
@@ -21,15 +31,4 @@ export default [
             // }
         ]
     },
-
-    {
-        path: '/webrtc',
-        name: 'webRTC',
-        meta: {
-            icon: 'md-notifications',
-            title: '消息中心'
-        },
-        component: () => import('@views/webrtc/webrtc.vue')
-    }
-
 ];

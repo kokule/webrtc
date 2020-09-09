@@ -2,6 +2,10 @@
     <div class="webrtc">
         <header>
             <div class="title">WebRTC</div>
+            <div class="header-user">
+                <div class="header-user-name">{{userInfo.nickName}}，你好</div>
+                <i class="el-icon-switch-button sign-out" @click="logout"></i>
+            </div>
         </header>
         <div id="map"></div>
         <left-list></left-list>
@@ -17,10 +21,13 @@
             leftList
         },
         data () {
-            return {};
+            return {
+                userInfo: null
+            };
         },
         mounted () {
             // this.initMap();
+            this.userInfo = JSON.parse(localStorage.getItem('authUser'));
         },
         methods: {
             initMap () {
@@ -50,11 +57,33 @@
                     }
                 });
             },
+            logout () {
+                this.$confirm('是否要退出登录', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    this.$message({
+                        type: 'success',
+                        message: '退出登录成功!'
+                    });
+                    this.$utils.clearCache();
+                    this.$router.push({ name: 'login' });
+                }).catch(() => {
+                });
+            },
         }
     };
 </script>
 
 <style lang="scss" scoped>
+    @mixin textStyle($size) {
+        color: white;
+        line-height: 75px;
+        font-size: $size;
+        text-align: center;
+    }
+
     .webrtc {
         width: 100%;
         height: 100%;
@@ -77,7 +106,34 @@
                 line-height: 50px;
                 margin: 0 auto;
                 background-size: 100% 100%;
-                background-image: url("../../../assets/header.png");
+                background-image: url("../../../assets/webrtc/header.png");
+            }
+
+            .header-user {
+                display: flex;
+                width: 17%;
+                position: absolute;
+                right: 0;
+                top: 0;
+
+                &-name {
+                    @include textStyle(15px);
+                    text-align: right;
+                    width: 68%;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+
+                .sign-out {
+                    @include textStyle(20px);
+                    margin-left: 15px;
+                    width: 22%;
+                }
+
+                .el-icon-switch-button {
+                    cursor: pointer;
+                }
             }
         }
 

@@ -310,12 +310,12 @@
         .background-top {
             top: -5px;
             left: -5px;
-            background-image: url("../../../../../assets/videoPanelBorderL.png");
+            background-image: url("../../../../../assets/webrtc/videoPanelBorderL.png");
         }
         .background-bottom {
             top: 262px;
             right: -3px;
-            background-image: url("../../../../../assets/videoPanelBorderR.png");
+            background-image: url("../../../../../assets/webrtc/videoPanelBorderR.png");
         }
         .background-box {
             width: 100%;
