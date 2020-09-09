@@ -22,12 +22,12 @@
         },
         data () {
             return {
-                userInfo: null
+                userInfo: {}
             };
         },
         mounted () {
             // this.initMap();
-            this.userInfo = JSON.parse(localStorage.getItem('authUser'));
+            this.userInfo = JSON.parse(sessionStorage.getItem('authUser'));
         },
         methods: {
             initMap () {

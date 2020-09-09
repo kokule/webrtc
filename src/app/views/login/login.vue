@@ -66,7 +66,7 @@
                         if (res.data) {
                             this.$utils.setToken(res.data.token);
                             this.SET_USERINFO(res.data.user);
-                            localStorage.setItem('authUser', JSON.stringify(res.data.user));
+                            sessionStorage.setItem('authUser', JSON.stringify(res.data.user));
                             const loading = this.$loading({
                                 lock: true,
                                 text: '数据初始化...',

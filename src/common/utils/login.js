@@ -3,11 +3,13 @@ import Cookies from 'js-cookie';
 const TOKENKEY = 'Admin-Token';
 
 export const setToken = (token) => {
-    Cookies.set(TOKENKEY, token, { expires: 1 });
+    // Cookies.set(TOKENKEY, token, { expires: 1 });
+    sessionStorage.setItem(TOKENKEY, token)
 };
 
 export const getToken = () => {
-    return Cookies.get(TOKENKEY);
+    // return Cookies.get(TOKENKEY);
+    return sessionStorage.getItem(TOKENKEY)
 };
 
 export const clearCache = () => {

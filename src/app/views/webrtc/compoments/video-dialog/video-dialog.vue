@@ -74,7 +74,7 @@
                 }
             },
             keepAlive() {
-                if (this.connection.readyState == this.connection.OPEN) {
+                if (this.connection.readyState === this.connection.OPEN) {
                     this.send({
                         type: 1
                     });
