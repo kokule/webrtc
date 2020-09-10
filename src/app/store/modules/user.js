@@ -1,15 +1,19 @@
 const user = {
     namespaced: true,
     state: {
-        userInfo: {}
+        userInfo: {},
+        userList: []
     },
     mutations: {
-        SET_TOKEN (state, token) {
+        SET_TOKEN(state, token) {
             state.token = token;
         },
-        SET_USERINFO (state, data) {
+        SET_USERINFO(state, data) {
             state.userInfo = data
-        }
+        },
+        SET_USERLIST(state, data) {
+            state.userList = data
+        },
     }
 }
 

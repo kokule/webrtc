@@ -11,6 +11,20 @@ html, body, #app {
     background: rgba(0, 0, 0, 0.73);
 }
 
+.table-input, .input-message，.new-group-name {
+    .el-input__inner {
+        color: white;
+        height: 28px;
+        opacity: 0.5;
+        border-radius: 0;
+        background: #01112a;
+
+        &::placeholder {
+            color: white;
+        }
+    }
+}
+
 ::-webkit-scrollbar {
     width: 5px;
     height: 7px;

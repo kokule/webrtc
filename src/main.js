@@ -6,6 +6,7 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './app/router';
 import store from './app/store';
+import config from './common/config/index'
 
 import CommonPart from './common';
 import * as Api from './app/api';
@@ -15,9 +16,12 @@ autoSetRem(document, window);
 // 调试主题
 import '@/theme/default/index.scss';
 // import '@/theme/darken/index.scss';
+import './websocket'
+import './globledata'
 
 Vue.use(CommonPart);
 Vue.prototype.$api = Api;
+Vue.prototype.$config = config;
 
 Vue.config.productionTip = false;
 

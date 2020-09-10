@@ -24,7 +24,7 @@
                 </el-input>
                 <div class="warn-message">{{warningMsg}}</div>
                 <el-button type="primary" class="el-button" :disabled="buttonStatus" @click="handleLogin">登录</el-button>
-<!--                <div class="form-foot">欢迎使用三景权限管理平台</div>-->
+                <!--                <div class="form-foot">欢迎使用三景权限管理平台</div>-->
             </div>
         </div>
         <div class="login-form-bg"></div>
@@ -33,24 +33,25 @@
 </template>
 
 <script>
-    import { mapMutations } from 'vuex';
+    import {mapMutations} from 'vuex';
+    import {isConnectionExport} from '../../../websocket'
 
     export default {
         name: 'login',
         computed: {
-            buttonStatus () {
+            buttonStatus() {
                 return this.loginForm.account === '' || this.loginForm.password === '';
             }
         },
-        data () {
+        data() {
             return {
                 warningMsg: '',
                 loginForm: {
-                    account: '',
+                    account: 'isassSuperAdmin',
                     from: 'web-apidoc',
                     loginType: '1',
                     outerId: '',
-                    password: '',
+                    password: 'isass!123456',
                     verificationCode: ''
                 },
 
@@ -60,7 +61,7 @@
             ...mapMutations('user',
                 ['SET_USERINFO']
             ),
-            handleLogin () {
+            handleLogin() {
                 if (this.loginForm.account && this.loginForm.password) {
                     this.$api.loginApi.login(this.loginForm).then((res => {
                         if (res.data) {
@@ -71,9 +72,10 @@
                                 lock: true,
                                 text: '数据初始化...',
                             });
+                            isConnectionExport(); // 建立WebSocket连接
                             setTimeout(() => {
                                 loading.close();
-                                this.$router.push({ path: '/' });
+                                this.$router.push({path: '/'});
                             }, 1500);
                         } else {
                             this.warningMsg = res.message;

@@ -5,7 +5,7 @@ import * as Utils from './utils';
 export default {
     install: (Vue) => {
         for (let name of Object.keys(Components)) {
-            Vue.component(Components[name]['name'], Components[name]);
+            Vue.component(Components[name], Components[name]);
         }
         for (let name in Directives) {
             Vue.directive(name, Directives[name]);

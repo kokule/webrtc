@@ -4,22 +4,24 @@
         title="视频通话"
         :modal="false"
         @close="closeDialog"
-        custom-class="video-dialog"
+        custom-class="chat-message-dialog"
         :visible.sync="dialogVisible"
         :close-on-click-modal="false">
         <div class="background-top"></div>
         <div class="background-bottom"></div>
         <div class="background-box"></div>
-        <video id="yourVideo" autoplay></video>
-        <video id="other-video" autoplay></video>
     </el-dialog>
 </template>
 
 <script>
-    import {onLeave} from '../../../../../websocket'
 
     export default {
-        name: 'video-dialog',
+        name: 'chat-message-dialog',
+        props: {
+            chatMessageVisible: {
+                type: Boolean
+            }
+        },
         data() {
             return {
                 dialogVisible: false,
@@ -30,19 +32,18 @@
         },
         methods: {
             closeDialog() {
-                onLeave()
             }
         }
     }
     ;
 </script>
 
-<style  lang="scss">
+<style lang="scss">
     .el-dialog__wrapper {
         z-index: 0 !important;
     }
 
-    .video-dialog {
+    .chat-message-dialog {
         position: relative;
         z-index: 15;
         background: transparent;
@@ -72,25 +73,6 @@
             position: absolute;
             background: #01112a;
             opacity: 0.5;
-        }
-
-        #yourVideo {
-            width: 150px;
-            height: 120px;
-            position: absolute;
-            z-index: 21;
-            right: 0;
-            top: 70px;
-            background: #1CCCFF;
-        }
-
-        #other-video {
-            width: 100%;
-            height: 300px;
-            position: absolute;
-            z-index: 20;
-            left: 0;
-            background: black;
         }
 
         .el-dialog__header {

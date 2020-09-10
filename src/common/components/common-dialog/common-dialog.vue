@@ -1,48 +1,52 @@
 <template>
     <el-dialog
         width="25%"
-        title="视频通话"
+        :title="title"
         :modal="false"
-        @close="closeDialog"
-        custom-class="video-dialog"
+        @close="close"
+        custom-class="common-dialog"
         :visible.sync="dialogVisible"
         :close-on-click-modal="false">
         <div class="background-top"></div>
         <div class="background-bottom"></div>
         <div class="background-box"></div>
-        <video id="yourVideo" autoplay></video>
-        <video id="other-video" autoplay></video>
+        <!--<slot></slot>-->
     </el-dialog>
 </template>
 
 <script>
-    import {onLeave} from '../../../../../websocket'
-
     export default {
-        name: 'video-dialog',
+        name: 'common-dialog',
+        props: {
+            dialogVisible: {
+                type: Boolean,
+
+            },
+            title: {
+                type: String
+            }
+        },
         data() {
-            return {
-                dialogVisible: false,
-            };
+            return {};
         },
         mounted() {
 
         },
         methods: {
-            closeDialog() {
-                onLeave()
+            close() {
+                this.$emit('closeDialog', false)
             }
         }
     }
     ;
 </script>
 
-<style  lang="scss">
+<style lang="scss">
     .el-dialog__wrapper {
         z-index: 0 !important;
     }
 
-    .video-dialog {
+    .common-dialog {
         position: relative;
         z-index: 15;
         background: transparent;
@@ -57,12 +61,12 @@
         .background-top {
             top: -5px;
             left: -5px;
-            background-image: url("../../../../../assets/webrtc/videoPanelBorderL.png");
+            background-image: url("../../../assets/webrtc/videoPanelBorderL.png");
         }
         .background-bottom {
             top: 262px;
             right: -3px;
-            background-image: url("../../../../../assets/webrtc/videoPanelBorderR.png");
+            background-image: url("../../../assets/webrtc/videoPanelBorderR.png");
         }
         .background-box {
             width: 100%;
@@ -72,25 +76,6 @@
             position: absolute;
             background: #01112a;
             opacity: 0.5;
-        }
-
-        #yourVideo {
-            width: 150px;
-            height: 120px;
-            position: absolute;
-            z-index: 21;
-            right: 0;
-            top: 70px;
-            background: #1CCCFF;
-        }
-
-        #other-video {
-            width: 100%;
-            height: 300px;
-            position: absolute;
-            z-index: 20;
-            left: 0;
-            background: black;
         }
 
         .el-dialog__header {

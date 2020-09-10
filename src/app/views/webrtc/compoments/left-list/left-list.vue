@@ -2,7 +2,7 @@
     <div class="left-list">
         <div class="left-list-top">
             <div class="title-img">
-                <img src="../../../../../assets/webrtc/deco_title.png"/>
+                <img src="../../../../../assets/webrtc/deco_title.png" alt="标题图标"/>
             </div>
             <div class="title">融合通讯</div>
             <div class="title-bg"></div>
@@ -13,18 +13,21 @@
             <div class="top-menu">
                 <div class="title">已配置通话组</div>
                 <div class="add-button">
-                    <ecp-button type="primary" text="新建临时会话组"></ecp-button>
+                    <ecp-button type="primary" @click="showSessionDialog" text="新建临时会话组"></ecp-button>
                 </div>
             </div>
             <div class="content">
                 <div class="group">
-                    <div class="group-item" v-for="(item, index) in 5" :class="{'choose': isActiveIndex === index}"
-                         @click="isActiveIndex = index">
+                    <div class="group-item" v-for="(item, index) in sessionGroup"
+                         :class="{'choose': isActiveIndex === index}"
+                         @dblclick="deleteGroup(item)"
+                         @click="chooseGroup(item,index)">
                         <div class="item-img" v-show="isActiveIndex === index">
-                            <img src="../../../../../assets/webrtc/choose.png">
+                            <img src="../../../../../assets/webrtc/choose.png" alt="选中图标"/>
                         </div>
                         <div style="width: 98%">
-                            <p>智慧城市事业部 <span :class="{'active' : isActiveIndex === index}">30</span></p></div>
+                            <p>{{item.chatSession.title}} <span :class="{'active' : isActiveIndex === index}">({{item.chatUserVos.length}})</span>
+                            </p></div>
                     </div>
                 </div>
                 <div class="right-table">
@@ -39,7 +42,7 @@
                                 height="100%"
                                 class="ecp-table"
                                 :data="tableData"
-                                @row-click="clickPerson"
+                                @row-dblclick="clickPerson"
                                 highlight-current-row
                                 :header-row-style="headerStyle"
                                 style="width: 100%">
@@ -50,15 +53,18 @@
                                     width="20">
                                 </el-table-column>
                                 <el-table-column
-                                    prop="name"
-                                    width="80"
                                     align="center"
                                     label="姓名">
+                                    <template slot-scope="scope">
+                                        <span style="margin-left: 10px">{{ getUserById(scope.row.userId) }}</span>
+                                    </template>
                                 </el-table-column>
                                 <el-table-column
-                                    prop="phone"
                                     align="center"
-                                    label="手机号/座机">
+                                    label="在线状态">
+                                    <template slot-scope="scope">
+                                        <span style="margin-left: 10px">{{ getStatus(scope.row.chatUserStatus) }}</span>
+                                    </template>
                                 </el-table-column>
                             </el-table>
                         </template>
@@ -76,61 +82,116 @@
                             v-model="sendMessage">
                         </el-input>
                     </div>
-                    <ecp-button type="primary" @click="setUser" text="短信推送" style="float: right"></ecp-button>
+                    <ecp-button type="primary" @click="setUser" text="消息推送" style="float: right"></ecp-button>
                 </div>
             </div>
         </div>
-        <video-dialog ref="videoDialog" :otherUser="currentUser"></video-dialog>
+        <video-dialog ref="videoDialog"></video-dialog>
+        <add-session-dialog ref="sessionDialog"
+                            @init="init"
+                            @showSessionDialog="showSessionDialog"
+                            :sessionDialogVisible="sessionDialogVisible">
+        </add-session-dialog>
+        <chat-message-dialog :chatMessageVisible="chatMessageVisible"></chat-message-dialog>
+
     </div>
 </template>
 
 <script>
     import videoDialog from '../video-dialog/video-dialog';
+    import addSessionDialog from '../add-session-dialog/add-session-dialog';
+    import chatMessageDialog from '../chat-message-dialog/chat-message-dialog';
+    import {userLogin, callVideo} from '../../../../../websocket'
 
     export default {
         name: 'left-list',
         components: {
-            videoDialog
+            videoDialog,
+            addSessionDialog,
+            chatMessageDialog
         },
         data() {
             return {
                 memberName: '',
                 isActiveIndex: 0,
-                sendMessage: 'lingling',
+                sendMessage: '',
                 currentUser: null,
+                chatMessageVisible:false,
+                sessionDialogVisible: false,
                 headerStyle: {
                     background: '#06131F',
                     color: '#E1A51A',
                 },
-                tableData: [
-                    {
-                        name: 'qinkai',
-                        phone: '15949388635'
-                    },
-                    {
-                        name: 'kokule',
-                        phone: '45346873546'
-                    },
-                    {
-                        name: 'lingling',
-                        phone: '17563245896'
-                    }
-                ]
+                sessionGroup: [],
+                tableData: [],
+                allUserList: []
             };
         },
+        mounted() {
+            this.init()
+        },
         methods: {
+            init() {
+                this.$api.chatApi.getChatSession().then(res => {
+                    this.sessionGroup = res.data
+                    this.chooseGroup(res.data[0], 0)
+                })
+            },
+            chooseGroup(item, index) {
+                this.isActiveIndex = index
+                this.tableData = []
+                if (item) {
+                    this.tableData = item.chatUserVos
+                }
+
+            },
+            deleteGroup(item) {
+                this.$confirm('此操作将删除该条数据, 是否继续?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'error'
+                }).then(() => {
+                    this.$api.chatApi.deleteSessionGroup(item.chatSession.id).then(res => {
+                        this.$message({
+                            type: 'success',
+                            message: '删除成功!'
+                        });
+                        this.init();
+                    })
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消删除'
+                    });
+                })
+            },
+            getUserById(id) {
+                let name = '';
+                this.$store.state.user.userList.forEach(e => {
+                    if (e.id === id) {
+                        name = e.nickName;
+                    }
+                })
+                return name;
+            },
+            getStatus(status) {
+                return this.$config.communicationStatus[status];
+            },
+            showSessionDialog() {
+                this.sessionDialogVisible = !this.sessionDialogVisible;
+            },
             clickPerson(row, column, event) {
-                console.log(row);
-                this.currentUser = row
-                this.$refs.videoDialog.dialogVisible = true;
+                let otherUser = this.$store.state.user.userList.filter(e => e.id === row.userId)[0].account;
+                sessionStorage.setItem('targetUserId', otherUser);
+                callVideo();
             },
             callUserVideo() {
-                this.$refs.videoDialog.targetUser.userId = this.currentUser.name
-                this.$refs.videoDialog.callVideo()
+                this.$refs.videoDialog.dialogVisible = true;
+                userLogin();
             },
             setUser() {
-                this.$refs.videoDialog.loginUser.userId = this.sendMessage
-                this.$refs.videoDialog.userLogin()
+                sessionStorage.setItem('targetUserId', this.currentUser.name)
+                callVideo();
             }
         }
     };
@@ -179,6 +240,8 @@
             .title {
                 width: 40%;
                 z-index: 2;
+                font-size: 17px;
+                font-weight: bold;
                 padding-top: 2%;
                 text-align: center;
             }
@@ -343,19 +406,7 @@
     }
 </style>
 <style lang="scss">
-    .table-input, .input-message {
-        .el-input__inner {
-            color: white;
-            height: 28px;
-            opacity: 0.5;
-            border-radius: 0;
-            background: #01112a;
 
-            &::placeholder {
-                color: white;
-            }
-        }
-    }
 
     .input-message {
         .el-textarea__inner {
