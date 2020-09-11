@@ -70,19 +70,20 @@
                         </template>
                     </div>
                     <div class="group-button">
-                        <img @click="callUserVideo" style="margin-right: 10px" src="@assets/webrtc/video.png">
-                        <img src="@assets/webrtc/phone.png">
-                        <img style="float: right" src="@assets/webrtc/history.png">
+                        <img @click="callUserVideo" alt="video" style="margin-right: 10px"
+                             src="@assets/webrtc/video.png">
+                        <img alt="phone" src="@assets/webrtc/phone.png">
+                        <img alt="chat" @click="chatMessageVisible = !chatMessageVisible" style="float: right"
+                             src="@assets/webrtc/history.png">
                     </div>
                     <div class="input-message">
                         <el-input
                             type="textarea"
-                            :autosize="{ minRows: 5, maxRows: 5}"
                             placeholder="请输入推送消息"
-                            v-model="sendMessage">
+                            v-model="messageData.content">
                         </el-input>
                     </div>
-                    <ecp-button type="primary" @click="setUser" text="消息推送" style="float: right"></ecp-button>
+                    <ecp-button type="primary" @click="sendMessage" text="消息推送" style="float: right"></ecp-button>
                 </div>
             </div>
         </div>
@@ -92,7 +93,12 @@
                             @showSessionDialog="showSessionDialog"
                             :sessionDialogVisible="sessionDialogVisible">
         </add-session-dialog>
-        <chat-message-dialog :chatMessageVisible="chatMessageVisible"></chat-message-dialog>
+        <chat-message-dialog
+            ref="chatMessageDialog"
+            @closeDialog="closeDialog"
+            :chatMessageVisible="chatMessageVisible"
+            :currentSessionId="currentSessionId"
+        ></chat-message-dialog>
 
     </div>
 </template>
@@ -114,17 +120,22 @@
             return {
                 memberName: '',
                 isActiveIndex: 0,
-                sendMessage: '',
                 currentUser: null,
-                chatMessageVisible:false,
+                currentSessionId: '',
+                chatMessageVisible: false,
                 sessionDialogVisible: false,
+                sessionGroup: [],
+                tableData: [],
+                allUserList: [],
                 headerStyle: {
                     background: '#06131F',
                     color: '#E1A51A',
                 },
-                sessionGroup: [],
-                tableData: [],
-                allUserList: []
+                messageData: {
+                    content: '',
+                    chatSessionId: '',
+                    messageType: 1,
+                }
             };
         },
         mounted() {
@@ -141,6 +152,7 @@
                 this.isActiveIndex = index
                 this.tableData = []
                 if (item) {
+                    this.currentSessionId = item.chatSession.id;
                     this.tableData = item.chatUserVos
                 }
 
@@ -180,6 +192,9 @@
             showSessionDialog() {
                 this.sessionDialogVisible = !this.sessionDialogVisible;
             },
+            closeDialog() {
+                this.chatMessageVisible = !this.chatMessageVisible;
+            },
             clickPerson(row, column, event) {
                 let otherUser = this.$store.state.user.userList.filter(e => e.id === row.userId)[0].account;
                 sessionStorage.setItem('targetUserId', otherUser);
@@ -189,9 +204,12 @@
                 this.$refs.videoDialog.dialogVisible = true;
                 userLogin();
             },
-            setUser() {
-                sessionStorage.setItem('targetUserId', this.currentUser.name)
-                callVideo();
+            sendMessage() {
+                this.messageData.chatSessionId = this.currentSessionId;
+                this.$api.chatApi.sendMessage(this.messageData).then(res => {
+                    this.messageData.content = '';
+                    this.$refs.chatMessageDialog.getChatMessage();
+                })
             }
         }
     };
@@ -378,15 +396,15 @@
                 .group-button {
                     height: 4%;
                     margin: 8px 0 0 0;
-
                     img {
                         cursor: pointer;
                     }
                 }
 
                 .input-message {
-                    height: 17%;
-                    margin-bottom: 8%;
+                    height: 15%;
+                    margin-bottom: 6%;
+                    overflow-y: auto;
                 }
             }
         }
@@ -414,11 +432,16 @@
             opacity: 0.5;
             color: white;
             border-radius: 0;
+            min-height: 0 !important;
+            height: 100% !important;
             border: 0.00926rem solid rgba(255, 255, 255, 0.2);
 
             &::placeholder {
                 color: white;
             }
+        }
+        .el-textarea {
+            height: 100%;
         }
     }
 

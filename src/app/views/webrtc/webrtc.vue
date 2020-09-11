@@ -26,7 +26,7 @@
             };
         },
         mounted () {
-            // this.initMap();
+            this.initMap();
             this.userInfo = JSON.parse(sessionStorage.getItem('authUser'));
         },
         methods: {

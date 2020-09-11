@@ -146,7 +146,6 @@
         height: 26px;
         padding: 0 9px;
         border-radius: 0;
-        margin-top: 15px;
     }
 
     .el-dialog__wrapper {
@@ -158,7 +157,6 @@
         z-index: 15;
         background: transparent;
         .dialog-footer {
-            padding: 0 20px;
             .cancel {
                 @include button-style();
                 background-image: linear-gradient(transparent, transparent);
@@ -172,7 +170,7 @@
             width: 50%;
             height: 200px;
             position: absolute;
-            z-index: -1;
+            z-index:-1;
             background: no-repeat;
         }
         .background-top {
@@ -204,7 +202,7 @@
                 opacity: 0.5;
                 border-radius: 0;
                 background: #01112a;
-
+                border: 0.0095rem solid rgba(255, 255, 255, 0.2);
                 &::placeholder {
                     color: white;
                 }
@@ -233,6 +231,7 @@
             .list-content {
                 display: flex;
                 height: 94%;
+                margin-bottom: 5px;
                 .all-list, .new-list {
                     width: 48%;
                     height: 100%;
@@ -240,7 +239,7 @@
                     color: white;
                     padding: 1% 5%;
                     overflow-y: auto;
-                    border: 1px solid wheat;
+                    border: 0.0095rem solid rgba(255, 255, 255, 0.2);
                     z-index: 10;
                     .list-item {
                         display: flex;
@@ -280,6 +279,9 @@
         .el-dialog__body {
             height: 400px;
             padding: 10px 20px;
+        }
+        .el-dialog__footer {
+            padding: 20px 20px 18px 20px;
         }
     }
 </style>

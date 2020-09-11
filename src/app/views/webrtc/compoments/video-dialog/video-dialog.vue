@@ -79,14 +79,14 @@
             height: 120px;
             position: absolute;
             z-index: 21;
-            right: 0;
-            top: 70px;
-            background: #1CCCFF;
+            left: 0;
+            bottom: 25px;
+            background: black;
         }
 
         #other-video {
             width: 100%;
-            height: 300px;
+            height: 220px;
             position: absolute;
             z-index: 20;
             left: 0;

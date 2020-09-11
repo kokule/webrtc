@@ -1,7 +1,7 @@
 <template>
     <el-dialog
         width="25%"
-        title="视频通话"
+        title="历史消息记录"
         :modal="false"
         @close="closeDialog"
         custom-class="chat-message-dialog"
@@ -10,6 +10,12 @@
         <div class="background-top"></div>
         <div class="background-bottom"></div>
         <div class="background-box"></div>
+        <div class="chat-message-box" id="chat-box">
+            <div class="message-item" v-for="item in chatMessage" :key="item.id">
+                <p>{{item.fromUserNickName}}：</p>
+                <div class="content">{{item.content}}</div>
+            </div>
+        </div>
     </el-dialog>
 </template>
 
@@ -20,18 +26,44 @@
         props: {
             chatMessageVisible: {
                 type: Boolean
+            },
+            currentSessionId: {
+                type: String
+            }
+        },
+        watch: {
+            chatMessageVisible(newValue) {
+                this.dialogVisible = newValue;
+                if (newValue) {
+                    this.getChatMessage()
+                }
+            },
+            currentSessionId(newValue) {
+                this.getChatMessage()
             }
         },
         data() {
             return {
                 dialogVisible: false,
+                chatMessage: []
             };
         },
         mounted() {
 
         },
         methods: {
+            getChatMessage() {
+                this.$api.chatApi.getChatMessage({chatSessionId: this.currentSessionId}).then(res => {
+                    this.chatMessage = res.data;
+                    if (this.dialogVisible) {
+                        this.$nextTick(() => {
+                            document.getElementById('chat-box').scrollTop = document.getElementById('chat-box').scrollHeight;
+                        });
+                    }
+                })
+            },
             closeDialog() {
+                this.$emit('closeDialog')
             }
         }
     }
@@ -47,13 +79,25 @@
         position: relative;
         z-index: 15;
         background: transparent;
+        .chat-message-box {
+            width: 100%;
+            height: 100%;
+            padding: 2% 3%;
+            overflow-y: auto;
+            .message-item {
+                width: 100%;
+                color: white;
+                padding: 1%;
+                margin-bottom: 10px;
+                border: 0.00926rem solid rgba(255, 255, 255, 0.2);
+            }
+        }
         .background-top, .background-bottom {
             width: 50%;
             height: 200px;
             position: absolute;
-            z-index: 0;
+            z-index: -1;
             background: no-repeat;
-
         }
         .background-top {
             top: -5px;
@@ -70,6 +114,7 @@
             height: 92%;
             left: 0;
             top: 34px;
+            z-index: -1;
             position: absolute;
             background: #01112a;
             opacity: 0.5;

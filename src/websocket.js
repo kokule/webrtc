@@ -164,7 +164,7 @@ export const onLeave = () => {
 
 function startConnection() {
     if (hasUserMedia()) {
-        navigator.getUserMedia({video: true, audio: false}, (myStream) => {
+        navigator.getUserMedia({video: true, audio: true}, (myStream) => {
             stream = myStream;
             yourVideo = document.querySelector('#yourVideo');
             yourVideo.srcObject = stream;
